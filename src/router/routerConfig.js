@@ -17,6 +17,27 @@ export const registerRouter = {
   }
 }
 
+// 作为Main组件的子页面展示，单不在左侧菜单展示的路由
+export const otherRouter = {
+  path: '/',
+  name: 'otherRouter',
+  component: Main,
+  children: [
+    {
+      path: '/home',
+      name: 'Home'
+    },
+    {
+      path: '/info',
+      name: 'Info'
+    },
+    {
+      path: '/detail',
+      name: 'Detail'
+    }
+  ]
+}
+
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由
 export const menuRouter = [
   {
@@ -110,6 +131,7 @@ export const menuRouter = [
 
 export const routes = [
   menuRouter,
+  otherRouter,
   loginRouter,
   registerRouter
 ]
