@@ -121,7 +121,7 @@ export const menuRouter = [
 ]
 
 export const routers = [
-  menuRouter,
+  ...menuRouter,
   loginRouter,
   registerRouter,
   otherRouter
