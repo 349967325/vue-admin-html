@@ -1,10 +1,10 @@
 <template>
   <div>
-    这是Home页面
+    统计分析-01
   </div>
 </template>
 <script>
 export default {
-  name: 'Home'
+  name: 'StatisItem01'
 }
 </script>

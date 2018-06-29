@@ -1,10 +1,10 @@
 <template>
   <div>
-    这是Home页面
+    只是系统管理-03
   </div>
 </template>
 <script>
 export default {
-  name: 'Home'
+  name: 'SysItem03'
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    这是Home页面
+    这是登录页面
   </div>
 </template>
 <script>
 export default {
-  name: 'Home'
+  name: 'Login'
 }
 </script>

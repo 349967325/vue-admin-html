@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { routes } from './routerConfig'
+import { routers } from './routerConfig'
 
 Vue.use(VueRouter)
 
 // 配置路由
-const RouterConfig = [
-  routes
-]
+const RouterConfig = {
+  routes: routers
+}
 export const router = new VueRouter(RouterConfig)
