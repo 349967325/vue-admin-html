@@ -1,7 +1,9 @@
 <template>
 <div class="main">
   <!--左侧 菜单栏-->
-  <div class="sidebar-menu-con">左侧</div>
+  <div class="sidebar-menu-con">
+    <shrinkable-menu></shrinkable-menu>
+  </div>
   <!--右侧 顶部导航-->
   <div class="main-header-con">顶部</div>
   <!--右侧 页面视图-->
@@ -11,8 +13,12 @@
 </div>
 </template>
 <script>
+import ShrinkableMenu from './main-components/shrinkable-menu/ShrinkableMenu'
 export default {
-  name: 'Main'
+  name: 'Main',
+  components: {
+    ShrinkableMenu
+  }
 }
 </script>
 <style lang="less" scoped>
