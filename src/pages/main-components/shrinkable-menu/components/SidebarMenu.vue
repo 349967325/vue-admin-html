@@ -1,6 +1,6 @@
 <template>
   <Menu ref="sideMenu" theme="dark" width="auto">
-    <Submenu>
+    <Submenu name="sys">
       <template slot="title">
         <Icon type="ios-paper"></Icon>
         系统管理
@@ -9,7 +9,7 @@
       <Menu-item name="系统管理-02">系统管理-02</Menu-item>
       <Menu-item name="系统管理-03">系统管理-03</Menu-item>
     </Submenu>
-    <Submenu>
+    <Submenu name="statis">
       <template slot="title">
         <Icon type="ios-paper"></Icon>
         统计分析
@@ -17,7 +17,7 @@
       <Menu-item name="统计分析-01">统计分析-01</Menu-item>
       <Menu-item name="统计分析-02">统计分析-02</Menu-item>
     </Submenu>
-    <Submenu>
+    <Submenu name="member">
       <template slot="title">
         <Icon type="ios-paper"></Icon>
         会员管理
