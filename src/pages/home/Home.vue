@@ -4,7 +4,18 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
-  name: 'Home'
+  name: 'Home',
+  mounted () {
+    this.testAjax()
+  },
+  methods: {
+    testAjax () {
+      axios.get('http://api.renqichong.com/?s=Hello.World').then(res => {
+        console.log(res)
+      })
+    }
+  }
 }
 </script>

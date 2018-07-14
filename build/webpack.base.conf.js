@@ -48,11 +48,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
-      },
-      {
-        test: /\.sass$/,
-        loader: 'style-loader!css-loader!sass-loader'
+        loaders: ['vue-style-loader','css-loader','less-loader']
       },
       {
         test: /\.js$/,
