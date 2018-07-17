@@ -3,18 +3,13 @@ import Main from '@/pages/Main.vue'
 const Login = r => require.ensure([], () => r(require('@/pages/login/login')), 'login')
 const Register = r => require.ensure([], () => r(require('@/pages/register/Register')), 'register')
 const Home = r => require.ensure([], () => r(require('@/pages/home/Home')), 'home')
-// 系统管理
-const SysItem01 = r => require.ensure([], () => r(require('@/pages/sys/SysItem01')), 'sysItem01')
-const SysItem02 = r => require.ensure([], () => r(require('@/pages/sys/SysItem02')), 'sysItem02')
-const SysItem03 = r => require.ensure([], () => r(require('@/pages/sys/SysItem03')), 'sysItem03')
+// 自媒体
+const Article = r => require.ensure([], () => r(require('@/pages/media/Article')), 'article')
+const Video = r => require.ensure([], () => r(require('@/pages/media/Video')), 'video')
 
 // 会员管理
-const MemberItem01 = r => require.ensure([], () => r(require('@/pages/member/MemberItem01')), 'memberItem01')
-const MemberItem02 = r => require.ensure([], () => r(require('@/pages/member/MemberItem02')), 'memberItem02')
-
-// 统计分析
-const StatisItem01 = r => require.ensure([], () => r(require('@/pages/statis/StatisItem01')), 'statisItem01')
-const StatisItem02 = r => require.ensure([], () => r(require('@/pages/statis/StatisItem02')), 'statisItem02')
+const Recharge = r => require.ensure([], () => r(require('@/pages/recharge/Recharge')), 'recharge')
+const Account = r => require.ensure([], () => r(require('@/pages/account/Account')), 'account')
 
 // 不是Main组件的子页面
 export const loginRouter = {
@@ -53,68 +48,50 @@ export const otherRouter = {
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由
 export const menuRouter = [
   {
-    path: '/sys',
-    name: 'Sys',
-    title: '系统管理',
+    path: '/media',
+    name: 'Media',
+    title: '自媒体',
     component: Main,
     children: [
       {
-        path: 'sysItem01',
-        name: 'sysItem01',
-        title: '系统管理-01',
-        component: SysItem01
+        path: 'article',
+        name: 'Article',
+        title: '头条文章',
+        component: Article
       },
       {
-        path: 'sysItem02',
-        name: 'sysItem02',
-        title: '系统管理-02',
-        component: SysItem02
-      },
-      {
-        path: 'sysItem03',
-        name: 'sysItem03',
-        title: '系统管理-03',
-        component: SysItem03
+        path: 'video',
+        name: 'Video',
+        title: '头条视频',
+        component: Video
       }
     ]
   },
   {
-    path: '/statis',
-    name: 'Statis',
-    title: '统计分析',
+    path: '/rechange',
+    name: 'Rechange',
+    title: '账号充值',
     component: Main,
     children: [
       {
-        path: 'statisItem01',
-        name: 'StatisItem01',
-        title: '统计分析-01',
-        component: StatisItem01
-      },
-      {
-        path: 'statisItem02',
-        name: 'StatisItem02',
-        title: '统计分析-02',
-        component: StatisItem02
+        path: 'recharge',
+        name: 'Rechange',
+        title: '账号充值',
+        component: Recharge
       }
     ]
   },
   {
-    path: '/member',
-    name: 'Member',
-    title: '会员管理',
+    path: '/account',
+    name: 'Account',
+    title: '账号设置',
     component: Main,
     children: [
       {
-        path: 'memberItem01',
-        name: 'MemberItem01',
-        title: '会员管理-01',
-        component: MemberItem01
-      },
-      {
-        path: 'memberItem02',
-        name: 'MemberItem02',
-        title: '会员管理-02',
-        component: MemberItem02
+        path: 'account',
+        name: 'Account',
+        title: '账号设置',
+        component: Account
       }
     ]
   }

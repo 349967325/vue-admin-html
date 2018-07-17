@@ -1,0 +1,54 @@
+.main-header {
+    display: flex;
+    height: 64px;
+    box-shadow: 0 2px 1px 1px rgba(100,100,100,.1);
+    position: relative;
+    z-index: 11;
+
+    .header-logo-con {
+        padding: 0px 20px;
+        font-size: 20px;
+        height: 64px;
+        line-height: 64px;
+        color: #fff;
+    }
+
+    .header-avator-con {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 300px;
+        color: #fff;
+
+        .header-user-row {
+            display: inline-block;
+            height: 100%;
+        }
+
+        .user-dropdown{
+            &-menu-con{
+                position: absolute;
+                right: 10px;
+                top: 0;
+                text-align: center;
+                height: 100%;
+                .main-user-name{
+                    display: inline-block;
+                    word-break: keep-all;
+                    white-space: nowrap;
+                    vertical-align: middle;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    text-align: right;
+                    color: #fff;
+                }
+            }
+            &-innercon{
+                height: 100%;
+                padding-right: 15px;
+            }
+        }
+    }
+
+}
