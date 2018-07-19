@@ -32,7 +32,9 @@
         </div>
       </div>
     </Row>
-    <Row></Row>
+    <Row>
+      <Table></Table>
+    </Row>
     </Card>
   </div>
 </template>
