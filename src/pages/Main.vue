@@ -56,7 +56,7 @@ export default {
   }
 
   .single-page-con {
-    padding: 15px 10px 10px 10px;
+    padding: 20px 15px 15px 15px;
     position: absolute;
     top: 64px;
     left: 200px;

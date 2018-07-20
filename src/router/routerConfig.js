@@ -6,6 +6,7 @@ const Home = r => require.ensure([], () => r(require('@/pages/home/Home')), 'hom
 // 自媒体
 const Article = r => require.ensure([], () => r(require('@/pages/media/Article')), 'article')
 const Video = r => require.ensure([], () => r(require('@/pages/media/Video')), 'video')
+const CreatTask = r => require.ensure([], () => r(require('@/pages/media/CreatTask')), 'creatTask')
 
 // 会员管理
 const Recharge = r => require.ensure([], () => r(require('@/pages/recharge/Recharge')), 'recharge')
@@ -41,6 +42,11 @@ export const otherRouter = {
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/media/creatTask',
+      name: 'CreatTask',
+      component: CreatTask
     }
   ]
 }
