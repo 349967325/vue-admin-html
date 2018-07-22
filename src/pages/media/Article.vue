@@ -4,101 +4,53 @@
 
 <template>
   <div>
-    <Card>
-      <Row>
-        <Button type="primary" icon="plus">创建新任务</Button>
-      </Row>
-    <Row>
+    <el-card shadow="hover">
+      <el-row>
+        <el-tabs type="card">
+        <el-tab-pane name="inside" label="头条文章(站内)"></el-tab-pane>
+        </el-tabs>
+      </el-row>
+      <el-row>
+        <el-button type="primary" icon="el-icon-plus" @click="goTaskPage">创建新任务</el-button>
+      </el-row>
+    <el-row>
       <h4 class="box-title">
-        <Icon type="search" size="16" style="margin-right: 10px;"></Icon>
-        <span>筛选及查询</span>
-        </h4>
-      <div class="chooseState">
-        <div class="state-block">
-          <span class="state-title">任务状态</span>
-          <RadioGroup v-model="query['state']">
-            <Radio label="all">全部</Radio>
-            <Radio label="opti">优化中</Radio>
-            <Radio label="stop">停止中</Radio>
-            <Radio label="susp">暂停中</Radio>
-            <Radio label="time">定时中</Radio>
-          </RadioGroup>
-        </div>
-        <div class="input-block">
-          <Select v-model="query['type']" style="width: 160px;">
-            <Option value="name" key="1">搜索任务名称</Option>
-            <Option value="art_num" key="2">搜索文章编号</Option>
-            <Option value="task_num" key="3">搜索任务编号</Option>
-          </Select>
-          <Input icon="ios-search" v-model="query['text']" style="width: 200px;"/>
-          <Button type="primary">查询</Button>
-        </div>
-      </div>
-    </Row>
-    <Row>
-      <h4 class="box-title">
-        <Icon type="navicon-round" size="16" style="margin-right: 10px;"></Icon>
         <span>任务列表</span>
       </h4>
-      <Table :data="tableData" :columns="columns" border></Table>
-    </Row>
-    </Card>
+      <el-table :data="tableData" border width="100%">
+        <el-table-column label="编号"></el-table-column>
+        <el-table-column label="任务名称"></el-table-column>
+        <el-table-column label="文章名称"></el-table-column>
+        <el-table-column label="文章链接"></el-table-column>
+        <el-table-column label="计划量"></el-table-column>
+        <el-table-column label="今日"></el-table-column>
+        <el-table-column label="状态"></el-table-column>
+      </el-table>
+      <div class="pagination-box">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :total="1000">
+        </el-pagination>
+      </div>
+    </el-row>
+    </el-card>
   </div>
 </template>
 <script>
 import articleData from '@/util/MockData'
-const columns = [
-  {
-    title: '编号',
-    type: 'index'
-  },
-  {
-    title: '任务名称',
-    key: 'task_name'
-  },
-  {
-    title: '文章名称',
-    key: 'article_name'
-  },
-  {
-    title: '文章链接',
-    key: 'task_url'
-  },
-  {
-    title: '计划量',
-    key: 'task_plan'
-  },
-  {
-    title: '今日',
-    key: 'today'
-  },
-  {
-    title: '昨日',
-    key: 'yest'
-  },
-  {
-    title: '有效期',
-    key: 'time'
-  },
-  {
-    title: '状态',
-    key: 'status'
-  },
-  {
-    title: '任务控制'
-  }
-]
+
 export default {
   name: 'Article',
   data () {
     return {
-      columns,
       tableData: [],
       query: {
         state: 'all',
         type: '',
         text: ''
-      }
+      },
+      curTab: '' // 当前tab
     }
   },
   mounted () {
@@ -108,6 +60,10 @@ export default {
     getList () {
       this.tableData = articleData.articleData.resultList
       console.log(this.tableData)
+    },
+    // 页面跳转
+    goTaskPage () {
+      this.$router.push({path: '/media/articleTask'})
     }
   }
 }

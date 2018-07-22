@@ -6,9 +6,9 @@ const Home = r => require.ensure([], () => r(require('@/pages/home/Home')), 'hom
 // 自媒体
 const Article = r => require.ensure([], () => r(require('@/pages/media/Article')), 'article')
 const Video = r => require.ensure([], () => r(require('@/pages/media/Video')), 'video')
-const CreatTask = r => require.ensure([], () => r(require('@/pages/media/CreatTask')), 'creatTask')
+const ArticleTask = r => require.ensure([], () => r(require('@/pages/media/ArticleTask')), 'articleTask')
+const VideoTask = r => require.ensure([], () => r(require('@/pages/media/VideoTask')), 'videoTask')
 
-// 会员管理
 const Recharge = r => require.ensure([], () => r(require('@/pages/recharge/Recharge')), 'recharge')
 const Account = r => require.ensure([], () => r(require('@/pages/account/Account')), 'account')
 
@@ -44,9 +44,14 @@ export const otherRouter = {
       component: Home
     },
     {
-      path: '/media/creatTask',
-      name: 'CreatTask',
-      component: CreatTask
+      path: '/media/articleTask',
+      name: 'ArticleTask',
+      component: ArticleTask
+    },
+    {
+      path: '/media/videoTask',
+      name: 'VideoTask',
+      component: VideoTask
     }
   ]
 }
@@ -88,8 +93,8 @@ export const menuRouter = [
     ]
   },
   {
-    path: '/account',
-    name: 'Account',
+    path: '/user',
+    name: 'User',
     title: '账号设置',
     component: Main,
     children: [

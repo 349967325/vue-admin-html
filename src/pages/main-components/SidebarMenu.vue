@@ -1,30 +1,22 @@
 <template>
-  <Menu ref="sideMenu" theme="dark" width="200">
-    <Submenu name="media">
-      <template slot="title">
-        <Icon type="ios-navigate"></Icon>
-        <span>自媒体</span>
-      </template>
-      <router-link to="/media/article">
-        <Menu-item name="article">头条文章</Menu-item>
-      </router-link>
-      <router-link to="/media/video">
-        <Menu-item name="video">头条视频</Menu-item>
-      </router-link>
-    </Submenu>
-    <router-link to="/recharge">
-      <Menu-item name="recharge">
-      <Icon type="social-yen-outline"></Icon>
-      <span>账号充值</span>
-    </Menu-item>
-    </router-link>
-    <router-link to="/account">
-      <Menu-item name="account">
-      <Icon type="ios-gear-outline"></Icon>
-      <span>账号设置</span>
-    </Menu-item>
-    </router-link>
-  </Menu>
+<el-menu background-color="#495060" text-color="#fff" active-text-color="#ffd04b">
+  <el-submenu>
+    <template slot="title">
+      <i class="el-icon-menu"></i>
+      <span>自媒体</span>
+    </template>
+    <el-menu-item index="1-1">头条文章</el-menu-item>
+    <el-menu-item index="1-2">头条视频</el-menu-item>
+  </el-submenu>
+  <el-menu-item index="2">
+    <i class="el-icon-star-off"></i>
+    <span slot="title">账号充值</span>
+  </el-menu-item>
+  <el-menu-item index="3">
+    <i class="el-icon-setting"></i>
+    <span slot="title">账号设置</span>
+  </el-menu-item>
+</el-menu>
 </template>
 <script>
 export default {

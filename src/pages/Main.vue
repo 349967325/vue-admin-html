@@ -40,7 +40,7 @@ export default {
     width: 100%;
     height: 64px;
     z-index: 20;
-    background-color: #495060;
+    background-color: rgb(73, 80,96);
   }
 
   .sidebar-menu-con {
@@ -52,7 +52,7 @@ export default {
     left: 0;
     bottom: 0px;
     z-index: 21;
-    background-color: #495060;
+    background-color: rgb(73, 80,96);
   }
 
   .single-page-con {
