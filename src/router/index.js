@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import { routers } from './routerConfig'
 
 Vue.use(VueRouter)
@@ -11,6 +11,6 @@ const RouterConfig = {
 }
 export const router = new VueRouter(RouterConfig)
 
-router.beforeEach((to, from, next) => {
-  console.log(next)
-})
+// router.beforeEach((to, from, next) => {
+//   console.log(next)
+// })

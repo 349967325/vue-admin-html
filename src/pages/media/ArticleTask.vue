@@ -29,8 +29,10 @@
                             <span style="margin-left: 10px; color: #2d8cf0;">基础流量费：0.05点</span>
                         </el-form-item>
                         <el-form-item label="流量时间控制">
-                            <span style="display: inline-block; width: 180px; margin-right: 40px;">平滑模式</span>
-                            <el-button>设置</el-button>
+                            <el-radio-group v-model="radio2">
+                                <el-radio :label="3">开启</el-radio>
+                                <el-radio :label="6">不开启</el-radio>
+                            </el-radio-group>
                         </el-form-item>
                     </el-form>
                 </div>
@@ -43,6 +45,11 @@
 </template>
 <script>
 export default {
-  name: 'ArticleTask'
+  name: 'ArticleTask',
+  data () {
+    return {
+      radio2: '6'
+    }
+  }
 }
 </script>

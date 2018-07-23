@@ -18,13 +18,13 @@
         <span>任务列表</span>
       </h4>
       <el-table :data="tableData" border width="100%">
-        <el-table-column label="编号"></el-table-column>
-        <el-table-column label="任务名称"></el-table-column>
-        <el-table-column label="文章名称"></el-table-column>
-        <el-table-column label="文章链接"></el-table-column>
-        <el-table-column label="计划量"></el-table-column>
-        <el-table-column label="今日"></el-table-column>
-        <el-table-column label="状态"></el-table-column>
+        <el-table-column label="编号" prop="task_no"></el-table-column>
+        <el-table-column label="任务名称" prop="task_name"></el-table-column>
+        <el-table-column label="文章名称" prop="task_link_name"></el-table-column>
+        <el-table-column label="文章链接" prop="task_link"></el-table-column>
+        <el-table-column label="计划量" prop="task_num"></el-table-column>
+        <el-table-column label="今日" prop="task_day_num"></el-table-column>
+        <el-table-column label="状态" prop="task_status"></el-table-column>
       </el-table>
       <div class="pagination-box">
         <el-pagination

@@ -3,7 +3,7 @@
 </style>
 <template>
     <div>
-        <el-card>
+        <el-card shadow="hover">
             <el-row>
                 <el-tabs type="card">
                 <el-tab-pane name="account" label="账号设置"></el-tab-pane>
@@ -21,7 +21,7 @@
                         <span style="padding-left:10px;">349967325@qq.com</span>
                     </el-form-item>
                     <el-form-item label="密码">
-                        <span style="padding-left:10px;"><el-button>修改密码</el-button></span>
+                        <span style="padding-left:10px;"><el-button @click="goModifyPassword">修改密码</el-button></span>
                     </el-form-item>
                 </el-form>
             </el-row>
@@ -30,6 +30,11 @@
 </template>
 <script>
 export default {
-  name: 'Account'
+  name: 'Account',
+  methods: {
+    goModifyPassword () {
+      this.$router.push({path: '/user/password'})
+    }
+  }
 }
 </script>

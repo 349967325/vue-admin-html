@@ -11,6 +11,7 @@ const VideoTask = r => require.ensure([], () => r(require('@/pages/media/VideoTa
 
 const Recharge = r => require.ensure([], () => r(require('@/pages/recharge/Recharge')), 'recharge')
 const Account = r => require.ensure([], () => r(require('@/pages/account/Account')), 'account')
+const Password = r => require.ensure([], () => r(require('@/pages/account/Password')), 'Password')
 
 // 不是Main组件的子页面
 export const loginRouter = {
@@ -103,6 +104,12 @@ export const menuRouter = [
         name: 'Account',
         title: '账号设置',
         component: Account
+      },
+      {
+        path: 'Password',
+        name: 'Password',
+        title: '修改密码',
+        component: Password
       }
     ]
   }
