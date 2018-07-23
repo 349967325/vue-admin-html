@@ -7,7 +7,7 @@
           欢迎登录
         </p>
         <div class="form-con">
-          <el-form>
+          <el-form ref="loginForm" :model="form" :rules="rules">
             <el-form-item>
               <el-input placeholder="请输入用户名" />
             </el-form-item>
@@ -24,14 +24,37 @@
   </div>
 </template>
 <script>
+import Cookies from 'js-cookie'
+const rules = {
+  userName: [
+    { required: true, message: '用户名不能为空', trigger: 'blur'}
+  ],
+  password: [
+    { required: true, message: '密码不能为空', trigger: 'blur'}
+  ]
+}
 export default {
   name: 'Login',
   data () {
-    return {}
+    return {
+      rules,
+      form: {
+        userName: '',
+        password: ''
+      }
+    }
   },
   methods: {
     handleSubmit () {
-      console.log('登录')
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          Cookies.set('user', this.form.userName)
+          Cookies.set('password', this.form.password)
+        }
+      })
+    },
+    userLogin () {
+      console.log('用户登录')
     }
   }
 }
