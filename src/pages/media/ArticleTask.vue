@@ -29,9 +29,9 @@
                             <span style="margin-left: 10px; color: #2d8cf0;">基础流量费：0.05点</span>
                         </el-form-item>
                         <el-form-item label="流量时间控制">
-                            <el-radio-group v-model="radio2">
-                                <el-radio :label="3">开启</el-radio>
-                                <el-radio :label="6">不开启</el-radio>
+                            <el-radio-group v-model="isUse" @change="toggleFlow">
+                                <el-radio label="Y">开启</el-radio>
+                                <el-radio label="N">不开启</el-radio>
                             </el-radio-group>
                         </el-form-item>
                     </el-form>
@@ -41,14 +41,25 @@
                 <el-button type="primary">立即开始</el-button>
             </el-row>
         </el-card>
+        <setflow-modal v-model="modal.flowModal"></setflow-modal>
     </div>
 </template>
 <script>
+import SetflowModal from './components/SetflowModal'
 export default {
   name: 'ArticleTask',
+  components: {SetflowModal},
   data () {
     return {
-      radio2: '6'
+      modal: {flowModal: false},
+      isUse: 'N'
+    }
+  },
+  methods: {
+    toggleFlow (val) {
+      if (val === 'Y') {
+        this.modal.flowModal = true
+      }
     }
   }
 }
