@@ -1,4 +1,5 @@
 import axios from 'axios'
+import qs from 'qs'
 
 axios.interceptors.response.use(response => {
   return response.data
@@ -22,36 +23,39 @@ axios.interceptors.response.use(response => {
   return {success: false, msg: 'Sorry, 页面错误！'}
 })
 
-axios.defaults.baseURL = 'http://api.renqichong.com'
-// 设置默认请求头
-axios.defaults.headers = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json'
-}
-axios.defaults.timeout = 10000
+const baseURL = 'http://api.renqichong.com'
 
 const Ajax = {
-  get (url, param) {
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'get',
-        url,
-        params: param
-      }).then(res => {
-        resolve(res)
-      })
-    })
+  ajax (url, params, opts) {
+    if (!url.startsWith('http')) {
+      url = baseURL + url
+    }
+    let config = {url: url, method: 'post', responseType: 'json', timeout: 60000}
+    if (opts) {
+      config = {...config, ...opts}
+    }
+    if (config['method'] === 'post') {
+      config['data'] = qs.stringify(params)
+    } else {
+      config['params'] = params
+    }
+    return axios(config)
   },
-  post (url, param) {
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'post',
-        url,
-        data: param
-      }).then(res => {
-        resolve(res)
-      })
-    })
+  get (url, params, opts) {
+    if (opts) {
+      opts = Object.assign(opts, {method: 'get'})
+    } else {
+      opts = {method: 'get'}
+    }
+    return this.ajax(url, params, opts)
+  },
+  post (url, params, opts) {
+    if (opts) {
+      opts = Object.assign(opts, {method: 'post'})
+    } else {
+      opts = {method: 'post'}
+    }
+    return this.ajax(url, params, opts)
   }
 }
 export default Ajax

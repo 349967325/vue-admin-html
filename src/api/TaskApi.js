@@ -4,6 +4,10 @@ export default {
   getLogin (params) {
     return Ajax.post('/?s=Login.index', params)
   },
+  // 注册
+  userRegister (params) {
+    return Ajax.post('?/Login.register', params)
+  },
   // 创建任务
   creatTask (params) {
     return Ajax.post('/?s=Task.createTask', params)

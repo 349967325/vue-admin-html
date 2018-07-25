@@ -18,6 +18,7 @@
         </div>
         <el-row class="login-footer">
             <el-button type="primary" @click="handleSubmit" style="width: 120px;">登录</el-button>
+            <p style="margin-top: 20px; text-align: center; color: #666; cursor: pointer;">免费注册</p>
           </el-row>
       </el-card>
     </div>
@@ -50,8 +51,6 @@ export default {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.userLogin()
-          // Cookies.set('user', this.form.userName)
-          // Cookies.set('password', this.form.password)
         }
       })
     },
