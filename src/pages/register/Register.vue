@@ -4,22 +4,25 @@
     <div class=login-con>
       <el-card>
         <p slot="header">
-          欢迎登录
+          账号注册
         </p>
         <div class="form-con">
-          <el-form ref="loginForm" :model="form" :rules="rules">
+          <el-form ref="form" :model="form" :rules="regRules">
             <el-form-item prop="userName">
               <el-input v-model.trim="form['userName']" placeholder="请输入用户名" />
             </el-form-item>
             <el-form-item prop="password">
               <el-input v-model.trim="form['password']" type="password" placeholder="请输入密码" />
             </el-form-item>
+            <el-form-item prop="repassword">
+              <el-input v-model.trim="form['repassword']" type="password" placeholder="请输入密码" />
+            </el-form-item>
           </el-form>
         </div>
         <el-row class="login-footer">
-          <el-button type="primary" @click="handleSubmit" style="width: 120px;">登录</el-button>
+          <el-button type="primary" @click="handleSubmit" style="width: 120px;">注册</el-button>
           <p class="hint">
-            <router-link to="/register">免费注册</router-link>
+            <router-link to="/login">已有账号，马上登录</router-link>
           </p>
         </el-row>
       </el-card>
@@ -28,43 +31,50 @@
 </template>
 <script>
 import TaskApi from '@/api/TaskApi'
-import Cookies from 'js-cookie'
-const rules = {
+// import Cookies from 'js-cookie'
+
+const regRules = {
   userName: [
     {required: true, message: '用户名不能为空', trigger: 'blur'}
   ],
   password: [
     {required: true, message: '密码不能为空', trigger: 'blur'}
+  ],
+  repassword: [
+    {required: true, message: '确认密码不能为空', trigger: 'blur'}
   ]
 }
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
     return {
-      rules,
+      regRules,
       form: {
         userName: '',
-        password: ''
+        password: '',
+        repassword: ''
       }
     }
   },
   methods: {
     handleSubmit () {
-      this.$refs.loginForm.validate((valid) => {
+      this.$refs.form.validate((valid) => {
         if (valid) {
-          this.userLogin()
+          this.userRegister()
         }
       })
     },
-    userLogin () {
+    userRegister () {
       let params = {}
       params['user_name'] = this.form['userName']
       params['password'] = this.form['password']
-      TaskApi.getLogin(params).then(res => {
+      params['repassword'] = this.form['repassword']
+      TaskApi.userRegister(params).then(res => {
         if (res.ret === 200) {
-          Cookies.set('user', res.data.user_name)
-          Cookies.set('user_token', res.data.user_token)
-          this.$store.commit('setUserInfo', res.data)
+          this.$message({
+            message: '恭喜你，注册成功！',
+            type: 'success'
+          })
         }
       })
     }
@@ -72,5 +82,5 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  @import './login.less';
+  @import './less/register.less';
 </style>

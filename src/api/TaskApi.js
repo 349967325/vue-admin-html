@@ -6,7 +6,7 @@ export default {
   },
   // 注册
   userRegister (params) {
-    return Ajax.post('?/Login.register', params)
+    return Ajax.post('/?s=Login.register', params)
   },
   // 创建任务
   creatTask (params) {
