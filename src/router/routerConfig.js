@@ -36,7 +36,7 @@ export const registerRouter = {
 export const otherRouter = {
   path: '/',
   name: 'otherRouter',
-  redirect: '/home',
+  redirect: '/media/article',
   component: Main,
   children: [
     {
