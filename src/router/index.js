@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import { routers } from './routerConfig'
 
 Vue.use(VueRouter)
@@ -11,12 +11,15 @@ const RouterConfig = {
 }
 export const router = new VueRouter(RouterConfig)
 
-router.beforeEach((to, from, next) => {
-  if (!Cookies.get('user')) { // 判断是否已经登录且前往的页面不是登录页
-    next({
-      path: '/login'
-    })
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.auth)) {
+//     if (Cookies.get('user')) {
+//       next()
+//     } else {
+//       console.log('ok')
+//       next({
+//         path: 'login'
+//       })
+//     }
+//   }
+// })

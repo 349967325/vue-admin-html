@@ -6,14 +6,14 @@
   <div>
     <el-card shadow="hover">
       <el-row>
-        <el-tabs type="card">
+        <el-tabs type="card" value="inside">
         <el-tab-pane name="inside" label="头条文章(站内)"></el-tab-pane>
         </el-tabs>
       </el-row>
       <el-row>
         <el-button type="primary" icon="el-icon-plus" @click="goTaskPage">创建新任务</el-button>
       </el-row>
-    <el-row>
+    <el-row v-if="tableData.length > 0">
       <h4 class="box-title">
         <span>任务列表</span>
       </h4>
@@ -29,37 +29,64 @@
       <div class="pagination-box">
         <el-pagination
           background
-          layout="prev, pager, next"
-          :total="1000">
+          :current-page="page.current"
+          :page-size="page.size"
+          :page-sizes="page.sizeOpts"
+          :total="page.total"
+          layout="total, sizes, prev, pager, next, jumper">
         </el-pagination>
+      </div>
+    </el-row>
+    <el-row v-else>
+      <div class="no-result">
+        <no-result :pathUrl="toUrl"></no-result>
       </div>
     </el-row>
     </el-card>
   </div>
 </template>
 <script>
-import articleData from '@/util/MockData'
-
+import TaskApi from '@/api/TaskApi'
+import Cookies from 'js-cookie'
+import NoResult from '@/pages/main-components/NoResult'
 export default {
   name: 'Article',
+  components: {NoResult},
   data () {
     return {
+      toUrl: '/media/articleTask',
       tableData: [],
-      query: {
-        state: 'all',
-        type: '',
-        text: ''
-      },
-      curTab: '' // 当前tab
+      page: { total: 0, size: 20, current: 1, sizeOpts: [10, 20, 50, 100, 200, 500] }
     }
   },
   mounted () {
-    this.getList()
+    this.getArticleList()
+  },
+  computed: {
+    userInfo () {
+      let user = JSON.parse(Cookies.get('user'))
+      console.log(user)
+      return user
+    }
   },
   methods: {
-    getList () {
-      this.tableData = articleData.articleData.resultList
-      console.log(this.tableData)
+    getArticleList () {
+      let params = {}
+      params['user_token'] = this.userInfo['user_token']
+      params['task_type'] = 1
+      params['page'] = this.page.current
+      params['pagesize'] = this.page.size
+      TaskApi.getTaskList(params).then(res => {
+        if (res.ret === 200) {
+          console.log(res)
+          this.page.total = Number(res.data.count)
+          if (res.data.taskInfo) {
+            this.tableData = res.data.taskInfo
+          }
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
     },
     // 页面跳转
     goTaskPage () {

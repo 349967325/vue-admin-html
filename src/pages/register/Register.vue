@@ -71,12 +71,21 @@ export default {
       params['repassword'] = this.form['repassword']
       TaskApi.userRegister(params).then(res => {
         if (res.ret === 200) {
-          this.$message({
-            message: '恭喜你，注册成功！',
-            type: 'success'
-          })
+          this.$message.success('恭喜你，注册成功！')
+          this.clearData()
+        } else {
+          this.$message.error(res.msg)
         }
       })
+    },
+    // 清除数据
+    clearData () {
+      this.$refs.form.resetFields()
+      this.form = {
+        userName: '',
+        password: '',
+        repassword: ''
+      }
     }
   }
 }

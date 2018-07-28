@@ -29,11 +29,10 @@
                             <span style="margin-left: 10px; color: #2d8cf0;">基础流量费：0.05点</span>
                         </el-form-item>
                         <el-form-item label="流量时间控制">
-                            <el-radio-group v-model="isUse">
+                            <el-radio-group v-model="isUse" @change="toggleFlow">
                                 <el-radio label="Y">开启</el-radio>
                                 <el-radio label="N">不开启</el-radio>
                             </el-radio-group>
-                            <el-button style="margin-left: 30px;" v-show="isUse === 'Y' " @click="setFlowModal">设置</el-button>
                         </el-form-item>
                     </el-form>
                 </div>
@@ -42,7 +41,6 @@
                 <el-button type="primary">立即开始</el-button>
             </el-row>
         </el-card>
-        <!--弹窗-->
         <setflow-modal v-model="modal.flowModal"></setflow-modal>
     </div>
 </template>
@@ -65,7 +63,7 @@ const rules = {
   ]
 }
 export default {
-  name: 'ArticleTask',
+  name: 'YelpTask',
   components: {SetflowModal},
   data () {
     return {
@@ -99,7 +97,7 @@ export default {
     creatArticleTask () {
       let params = Object.assign({}, this.form)
       params['user_token'] = this.userInfo['user_token']
-      params['task_type'] = 1
+      params['task_type'] = 3
       TaskApi.creatTask(params).then(res => {
         if (res.ret === 200) {
           this.$message.success('创建任务成功！')
@@ -109,8 +107,8 @@ export default {
         }
       })
     },
-    setFlowModal () {
-      if (this.isUse === 'Y') {
+    toggleFlow (val) {
+      if (val === 'Y') {
         this.modal.flowModal = true
       }
     },
@@ -126,7 +124,7 @@ export default {
     },
     // 返回任务列表
     toList () {
-      this.$router.push({path: '/media/article'})
+      this.$router.push({path: '/media/newYelp'})
     }
   }
 }

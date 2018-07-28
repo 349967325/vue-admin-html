@@ -62,8 +62,7 @@ export default {
       params['password'] = this.form['password']
       TaskApi.getLogin(params).then(res => {
         if (res.ret === 200) {
-          Cookies.set('user', res.data.user_name)
-          Cookies.set('user_token', res.data.user_token)
+          Cookies.set('user', res.data, { expires: 1 })
           this.$store.commit('setUserInfo', res.data)
         }
       })

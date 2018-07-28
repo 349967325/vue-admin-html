@@ -11,6 +11,9 @@
     <router-link to="/media/video">
     <el-menu-item index="1-2">头条视频</el-menu-item>
     </router-link>
+    <router-link to="/media/newYelp">
+    <el-menu-item index="1-3">新美大</el-menu-item>
+    </router-link>
   </el-submenu>
   <router-link to="/user/rechange">
   <el-menu-item index="2">

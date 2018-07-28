@@ -7,7 +7,7 @@
     <el-card shadow="hover">
       <el-row>
         <el-tabs type="card" value="inside">
-        <el-tab-pane name="inside" label="头条视频"></el-tab-pane>
+        <el-tab-pane name="inside" label="新美大"></el-tab-pane>
         </el-tabs>
       </el-row>
       <el-row>
@@ -20,8 +20,8 @@
       <el-table :data="tableData" border width="100%">
         <el-table-column label="编号" prop="task_no"></el-table-column>
         <el-table-column label="任务名称" prop="task_name"></el-table-column>
-        <el-table-column label="视频名称" prop="task_link_name"></el-table-column>
-        <el-table-column label="视频链接" prop="task_link"></el-table-column>
+        <el-table-column label="文章名称" prop="task_link_name"></el-table-column>
+        <el-table-column label="文章链接" prop="task_link"></el-table-column>
         <el-table-column label="计划量" prop="task_num"></el-table-column>
         <el-table-column label="今日" prop="task_day_num"></el-table-column>
         <el-table-column label="状态" prop="task_status"></el-table-column>
@@ -50,17 +50,17 @@ import TaskApi from '@/api/TaskApi'
 import Cookies from 'js-cookie'
 import NoResult from '@/pages/main-components/NoResult'
 export default {
-  name: 'Video',
+  name: 'NewYelp',
   components: {NoResult},
   data () {
     return {
-      toUrl: '/media/videoTask',
+      toUrl: '/media/yelpTask',
       tableData: [],
       page: { total: 0, size: 20, current: 1, sizeOpts: [10, 20, 50, 100, 200, 500] }
     }
   },
   mounted () {
-    this.getVideoList()
+    this.getArticleList()
   },
   computed: {
     userInfo () {
@@ -70,10 +70,10 @@ export default {
     }
   },
   methods: {
-    getVideoList () {
+    getArticleList () {
       let params = {}
       params['user_token'] = this.userInfo['user_token']
-      params['task_type'] = 2
+      params['task_type'] = 3
       params['page'] = this.page.current
       params['pagesize'] = this.page.size
       TaskApi.getTaskList(params).then(res => {
@@ -90,7 +90,7 @@ export default {
     },
     // 页面跳转
     goTaskPage () {
-      this.$router.push({path: '/media/videoTask'})
+      this.$router.push({path: '/media/yelpTask'})
     }
   }
 }
