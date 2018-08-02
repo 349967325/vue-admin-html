@@ -1,6 +1,6 @@
 <template>
 <el-menu background-color="#495060" text-color="#fff" active-text-color="#ffd04b">
-  <el-submenu>
+  <el-submenu index="1">
     <template slot="title">
       <i class="el-icon-menu"></i>
       <span>自媒体</span>
@@ -15,7 +15,7 @@
     <el-menu-item index="1-3">新美大</el-menu-item>
     </router-link>
   </el-submenu>
-  <router-link to="/user/rechange">
+  <router-link to="/user/recharge">
   <el-menu-item index="2">
     <i class="el-icon-star-off"></i>
     <span slot="title">账号充值</span>

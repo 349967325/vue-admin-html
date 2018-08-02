@@ -32,9 +32,7 @@ export const registerRouter = {
 export const menuRouter = [
   {
     path: '/',
-    redirect: '/media/article',
-    name: 'Main',
-    component: Main
+    redirect: '/media/article'
   },
   {
     path: '/media',

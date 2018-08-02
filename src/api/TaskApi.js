@@ -31,5 +31,9 @@ export default {
   // 账号充值商品
   rechargeProduct (params) {
     return Ajax.post('/?s=Product.index', params)
+  },
+  // 获取地区列表
+  getCityList (params) {
+    return Ajax.get('/?s=Area.index', params)
   }
 }

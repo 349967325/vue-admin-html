@@ -33,7 +33,9 @@
           :page-size="page.size"
           :page-sizes="page.sizeOpts"
           :total="page.total"
-          layout="total, sizes, prev, pager, next, jumper">
+          @size-change="pageChange"
+          @current-change="pageCurrentChange"
+          layout="total, sizes, pager, jumper">
         </el-pagination>
       </div>
     </el-row>
@@ -87,6 +89,14 @@ export default {
           this.$message.error(res.msg)
         }
       })
+    },
+    pageChange (size) {
+      this.page.size = size
+      this.getVideoList()
+    },
+    pageCurrentChange (current) {
+      this.page.current = current
+      this.getVideoList()
     },
     // 页面跳转
     goTaskPage () {

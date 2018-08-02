@@ -63,7 +63,7 @@ export default {
       TaskApi.getLogin(params).then(res => {
         if (res.ret === 200) {
           Cookies.set('user', res.data, { expires: 1 })
-          this.$store.commit('setUserInfo', res.data)
+          this.$router.push({path: '/media/article'})
         }
       })
     }

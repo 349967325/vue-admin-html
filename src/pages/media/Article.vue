@@ -33,7 +33,9 @@
           :page-size="page.size"
           :page-sizes="page.sizeOpts"
           :total="page.total"
-          layout="total, sizes, prev, pager, next, jumper">
+          @size-change="pageChange"
+          @current-change="pageCurrentChange"
+          layout="total, sizes, pager, jumper">
         </el-pagination>
       </div>
     </el-row>
@@ -78,7 +80,6 @@ export default {
       params['pagesize'] = this.page.size
       TaskApi.getTaskList(params).then(res => {
         if (res.ret === 200) {
-          console.log(res)
           this.page.total = Number(res.data.count)
           if (res.data.taskInfo) {
             this.tableData = res.data.taskInfo
@@ -87,6 +88,14 @@ export default {
           this.$message.error(res.msg)
         }
       })
+    },
+    pageChange (size) {
+      this.page.size = size
+      this.getArticleList()
+    },
+    pageCurrentChange (current) {
+      this.page.current = current
+      this.getArticleList()
     },
     // 页面跳转
     goTaskPage () {

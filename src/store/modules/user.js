@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 
 const user = {
   state: {
-    userinfo: {}
+    userBalance: 0
   },
   mutations: {
     logout (state, vm) {
@@ -22,8 +22,8 @@ const user = {
         localStorage.theme = theme
       }
     },
-    setUserInfo (state, user) {
-      state.userinfo = user
+    setUserBalance (state, balance) {
+      state.userBalance = balance
     }
   }
 }
