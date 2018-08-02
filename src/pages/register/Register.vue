@@ -9,13 +9,13 @@
         <div class="form-con">
           <el-form ref="form" :model="form" :rules="regRules">
             <el-form-item prop="userName">
-              <el-input v-model.trim="form['userName']" placeholder="请输入用户名" />
+              <el-input type="email" v-model.trim="form['userName']" placeholder="请输入邮箱" />
             </el-form-item>
             <el-form-item prop="password">
               <el-input v-model.trim="form['password']" type="password" placeholder="请输入密码" />
             </el-form-item>
             <el-form-item prop="repassword">
-              <el-input v-model.trim="form['repassword']" type="password" placeholder="请输入密码" />
+              <el-input v-model.trim="form['repassword']" type="password" placeholder="请确认密码" />
             </el-form-item>
           </el-form>
         </div>
@@ -60,7 +60,14 @@ export default {
     handleSubmit () {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.userRegister()
+          let isEmail = this.checkEmail()
+          if (isEmail === true) {
+            this.userRegister()
+          } else {
+            this.$message.error('请使用邮箱注册')
+            this.form['password'] = ''
+            this.form['repassword'] = ''
+          }
         }
       })
     },
@@ -77,6 +84,15 @@ export default {
           this.$message.error(res.msg)
         }
       })
+    },
+    // 校验是否是邮箱
+    checkEmail () {
+      let reg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$')
+      if (!reg.test(this.form['user_name'])) {
+        return false
+      } else {
+        return true
+      }
     },
     // 清除数据
     clearData () {

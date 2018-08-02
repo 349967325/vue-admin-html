@@ -64,6 +64,8 @@ export default {
         if (res.ret === 200) {
           Cookies.set('user', res.data, { expires: 1 })
           this.$router.push({path: '/media/article'})
+        } else {
+          this.$message.error(res.msg)
         }
       })
     }

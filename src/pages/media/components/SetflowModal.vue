@@ -24,22 +24,22 @@
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="0点">
-              <el-input-number size="small" v-model.trim="vals.val0"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val0"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="1点">
-              <el-input-number size="small" v-model.trim="vals.val1"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val1"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="2点">
-              <el-input-number size="small" v-model.trim="vals.val2"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val2"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="3点">
-              <el-input-number size="small" v-model.trim="vals.val3"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val3"></el-input-number>
             </el-form-item>
             </el-col>
           </el-row>
@@ -47,22 +47,22 @@
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="4点">
-              <el-input-number size="small" v-model.trim="vals.val4"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val4"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="5点">
-              <el-input-number size="small" v-model.trim="vals.val5"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val5"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="6点">
-              <el-input-number size="small" v-model.trim="vals.val6"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val6"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="7点">
-              <el-input-number size="small" v-model.trim="vals.val7"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val7"></el-input-number>
             </el-form-item>
             </el-col>
           </el-row>
@@ -70,22 +70,22 @@
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="8点">
-              <el-input-number size="small" v-model.trim="vals.val8"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val8"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="9点">
-              <el-input-number size="small" v-model.trim="vals.val9"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val9"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="10点">
-              <el-input-number size="small" v-model.trim="vals.val10"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val10"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="11点">
-              <el-input-number size="small" v-model.trim="vals.val11"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val11"></el-input-number>
             </el-form-item>
             </el-col>
           </el-row>
@@ -93,22 +93,22 @@
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="12点">
-              <el-input-number size="small" v-model.trim="vals.val12"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val12"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="13点">
-              <el-input-number size="small" v-model.trim="vals.val13"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val13"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="14点">
-              <el-input-number size="small" v-model.trim="vals.val14"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val14"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="15点">
-              <el-input-number size="small" v-model.trim="vals.val15"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val15"></el-input-number>
             </el-form-item>
             </el-col>
           </el-row>
@@ -116,22 +116,22 @@
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="16点">
-              <el-input-number size="small" v-model.trim="vals.val16"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val16"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="17点">
-              <el-input-number size="small" v-model.trim="vals.val17"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val17"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="18点">
-              <el-input-number size="small" v-model.trim="vals.val18"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val18"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="19点">
-              <el-input-number size="small" v-model.trim="vals.val19"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val19"></el-input-number>
             </el-form-item>
             </el-col>
           </el-row>
@@ -139,22 +139,22 @@
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="20点">
-              <el-input-number size="small" v-model.trim="vals.val20"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val20"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="21点">
-              <el-input-number size="small" v-model.trim="vals.val21"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val21"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="22点">
-              <el-input-number size="small" v-model.trim="vals.val22"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val22"></el-input-number>
             </el-form-item>
             </el-col>
             <el-col :span="6">
             <el-form-item label="23点">
-              <el-input-number size="small" v-model.trim="vals.val23"></el-input-number>
+              <el-input-number size="small" :min="0" v-model.trim="vals.val23"></el-input-number>
             </el-form-item>
             </el-col>
           </el-row>
