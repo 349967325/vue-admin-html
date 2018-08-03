@@ -9,7 +9,7 @@
         <div class="form-con">
           <el-form ref="loginForm" :model="form" :rules="rules">
             <el-form-item prop="userName">
-              <el-input v-model.trim="form['userName']" placeholder="请输入用户名" />
+              <el-input v-model.trim="form['userName']" placeholder="请输入用户邮箱或手机号" />
             </el-form-item>
             <el-form-item prop="password">
               <el-input v-model.trim="form['password']" type="password" placeholder="请输入密码" />

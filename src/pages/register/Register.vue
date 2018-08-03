@@ -84,7 +84,7 @@ export default {
       params['user_name'] = this.form['userName']
       params['password'] = this.form['password']
       params['repassword'] = this.form['repassword']
-      params['mobile'] = this.form['mobile']
+      params['user_mobile'] = this.form['mobile']
       TaskApi.userRegister(params).then(res => {
         if (res.ret === 200) {
           this.$message.success('恭喜你，注册成功！')
