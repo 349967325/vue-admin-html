@@ -8,7 +8,7 @@
         <el-row type="flex" justify="center" align="middle" style="height: 100%;">
           <span>余额：</span>
           <span>{{parseFloat(userBalance).toFixed(2)}}</span>
-          <el-button type="danger" size="small" style="margin-left: 20px;">充值</el-button>
+          <el-button type="danger" size="small" style="margin-left: 20px;" @click="goRecharge">充值</el-button>
           <span style="margin-left: 20px; font-size: 14px;">{{ userDetail['is_vip'] == '1'? 'VIP用户' : '普通用户'}}</span>
         </el-row>
       </div>
@@ -62,6 +62,9 @@ export default {
           this.$store.commit('setUserBalance', res.data.user_balance)
         }
       })
+    },
+    goRecharge () {
+      this.$router.push({path: '/user/recharge'})
     },
     handleCommand (command) {
       if (command === 'touser') {

@@ -11,122 +11,72 @@
       </el-row>
       <el-row>
         <ul class="recharge-con">
-          <li class="recharge-item-block">
+          <li class="recharge-item-block" v-for="item in prdList" :key="item['id']">
             <div class="coupon-box">
               <div class="par">
-                <span>1000</span>
+                <span>{{item['product_spot']}}</span>
                 <span class="text">点</span>
               </div>
               <div class="copy">
                 <p>购买价格</p>
-                <p>1000<span class="text">元</span></p>
+                <p>{{item['final_price']}}<span class="text">元</span></p>
               </div>
             </div>
             <div class="btn-box">
-              <el-button>立即购买</el-button>
-            </div>
-          </li>
-          <li class="recharge-item-block">
-            <div class="coupon-box">
-              <div class="par">
-                <span>1000</span>
-                <span class="text">点</span>
-              </div>
-              <div class="copy">
-                <p>购买价格</p>
-                <p>1000<span class="text">元</span></p>
-              </div>
-            </div>
-            <div class="btn-box">
-              <el-button>立即购买</el-button>
-            </div>
-          </li>
-          <li class="recharge-item-block">
-            <div class="coupon-box">
-              <div class="par">
-                <span>1000</span>
-                <span class="text">点</span>
-              </div>
-              <div class="copy">
-                <p>购买价格</p>
-                <p>1000<span class="text">元</span></p>
-              </div>
-            </div>
-            <div class="btn-box">
-              <el-button>立即购买</el-button>
-            </div>
-          </li>
-          <li class="recharge-item-block">
-            <div class="coupon-box">
-              <div class="par">
-                <span>1000</span>
-                <span class="text">点</span>
-              </div>
-              <div class="copy">
-                <p>购买价格</p>
-                <p>1000<span class="text">元</span></p>
-              </div>
-            </div>
-            <div class="btn-box">
-              <el-button>立即购买</el-button>
-            </div>
-          </li>
-          <li class="recharge-item-block">
-            <div class="coupon-box">
-              <div class="par">
-                <span>1000</span>
-                <span class="text">点</span>
-              </div>
-              <div class="copy">
-                <p>购买价格</p>
-                <p>1000<span class="text">元</span></p>
-              </div>
-            </div>
-            <div class="btn-box">
-              <el-button>立即购买</el-button>
-            </div>
-          </li>
-          <li class="recharge-item-block">
-            <div class="coupon-box">
-              <div class="par">
-                <span>1000</span>
-                <span class="text">点</span>
-              </div>
-              <div class="copy">
-                <p>购买价格</p>
-                <p>1000<span class="text">元</span></p>
-              </div>
-            </div>
-            <div class="btn-box">
-              <el-button>立即购买</el-button>
-            </div>
-          </li>
-          <li class="recharge-item-block">
-            <div class="coupon-box">
-              <div class="par">
-                <span>1000</span>
-                <span class="text">点</span>
-              </div>
-              <div class="copy">
-                <p>购买价格</p>
-                <p>1000<span class="text">元</span></p>
-              </div>
-            </div>
-            <div class="btn-box">
-              <el-button>立即购买</el-button>
+              <el-button @click="handleBuy">立即购买</el-button>
             </div>
           </li>
         </ul>
       </el-row>
     </el-card>
+    <buy-detail-modal v-model="modal.buyModal" :detailinfo="detailInfo"></buy-detail-modal>
   </div>
 </template>
 <script>
+import TaskApi from '@/api/TaskApi'
+import Cookies from 'js-cookie'
+import BuyDetailModal from './components/BuyDetailModal'
 export default {
   name: 'Recharge',
+  components: {BuyDetailModal},
   data () {
-    return {}
+    return {
+      modal: {buyModal: false},
+      detailInfo: {},
+      prdList: []
+    }
   },
-  methods: {}
+  computed: {
+    userInfo () {
+      let user = JSON.parse(Cookies.get('user'))
+      return user
+    }
+  },
+  mounted () {
+    this.getPrdList()
+  },
+  methods: {
+    getPrdList () {
+      let params = {}
+      params['user_token'] = this.userInfo['user_token']
+      TaskApi.rechargeProduct(params).then(res => {
+        if (res.ret === 200) {
+          if (res.data && res.data.length > 0) {
+            let _data = res.data
+            _data.forEach(item => {
+              if (item.status === '1') {
+                this.prdList.push(item)
+              }
+            })
+          }
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
+    handleBuy () {
+      this.modal.buyModal = true
+    }
+  }
 }
 </script>
