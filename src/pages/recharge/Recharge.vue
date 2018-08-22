@@ -23,7 +23,7 @@
               </div>
             </div>
             <div class="btn-box">
-              <el-button @click="handleBuy">立即购买</el-button>
+              <el-button @click="handleBuy(item)">立即购买</el-button>
             </div>
           </li>
         </ul>
@@ -74,7 +74,11 @@ export default {
         }
       })
     },
-    handleBuy () {
+    // 点击购买
+    handleBuy (prd) {
+      this.detailInfo = Object.assign({}, prd)
+      this.detailInfo['user_name'] = this.userInfo['user_name']
+      console.log(this.detailInfo)
       this.modal.buyModal = true
     }
   }

@@ -12,15 +12,15 @@
           <div class="detail-con">
             <div class="detail-item">
               <label>充值点数：</label>
-              <span style="color: #00bdae;">1000</span><span>点</span>
+              <span style="color: #00bdae;">{{detailinfo['product_spot']}}</span><span>点</span>
             </div>
             <div class="detail-item">
               <label>充值账号：</label>
-              <span>740707701@qq.com</span>
+              <span>{{detailinfo['user_name']}}</span>
             </div>
             <div class="detail-item">
               <label>付款金额：</label>
-              <span style="color: #ff4752;">￥1000</span>
+              <span style="color: #ff4752;">￥{{detailinfo['final_price']}}</span>
             </div>
           </div>
         </el-row>
@@ -31,7 +31,7 @@
           </p>
           <div class="detail-con">
             <el-radio v-model="paymethod" label="zfb">
-              支付宝
+              <img style="display: inline-block; width: 50px; vertical-align: middle;" src="../images/timg02.jpg" />
             </el-radio>
           </div>
         </el-row>
