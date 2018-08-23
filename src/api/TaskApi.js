@@ -35,5 +35,13 @@ export default {
   // 获取地区列表
   getCityList (params) {
     return Ajax.get('/?s=Area.index', params)
+  },
+  // 生成订单
+  setOrder (params) {
+    return Ajax.post('/?s=Pay.setOrder', params)
+  },
+  // 支付
+  pay (params) {
+    return Ajax.post('/?s=Pay.OrderPay', params)
   }
 }

@@ -35,11 +35,17 @@
             </el-radio>
           </div>
         </el-row>
+        <!--底部按钮-->
+        <div slot="footer" class="dialog-footer">
+          <el-button type="primary" :loading="loading" @click="confirm">确认付款</el-button>
+        </div>
       </div>
     </el-dialog>
   </div>
 </template>
 <script>
+import TaskApi from '@/api/TaskApi'
+import Cookies from 'js-cookie'
 export default {
   name: 'BuyDetailModal',
   props: {
@@ -59,12 +65,56 @@ export default {
   data () {
     return {
       visible: false,
+      loading: false,
       paymethod: 'zfb' // 支付方式
     }
   },
+  computed: {
+    userInfo () {
+      let user = JSON.parse(Cookies.get('user'))
+      return user
+    }
+  },
   methods: {
+    // 确认付款 按钮
+    confirm () {
+      this.loading = true
+      this.creatOrder()
+    },
+    // 生成订单
+    creatOrder () {
+      let params = {}
+      params['user_token'] = this.userInfo['user_token']
+      params['product_id'] = this.detailinfo['id']
+      TaskApi.setOrder(params).then(res => {
+        this.loading = false
+        if (res.ret === 200) {
+          this.orderPay(res.data)
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
+    // 支付
+    orderPay (orderId) {
+      let params = {}
+      params['user_token'] = this.userInfo['user_token']
+      params['order_id'] = orderId
+      TaskApi.pay(params).then(res => {
+        if (res.ret === 200) {
+          if (res.data) {
+            document.write(res.data)
+          }
+        } else {
+          this.$message.error(res.msg)
+        }
+      })
+    },
+    // 关闭弹窗
     closeModal () {
-      this.visible = false
+      this.loading = false
+      this.$parent.detailInfo = {}
+      this.$parent.modal['buyModal'] = false
     }
   },
   watch: {

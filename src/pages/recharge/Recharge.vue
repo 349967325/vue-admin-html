@@ -78,7 +78,6 @@ export default {
     handleBuy (prd) {
       this.detailInfo = Object.assign({}, prd)
       this.detailInfo['user_name'] = this.userInfo['user_name']
-      console.log(this.detailInfo)
       this.modal.buyModal = true
     }
   }

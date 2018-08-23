@@ -24,7 +24,12 @@
         <el-table-column label="文章链接" prop="task_link"></el-table-column>
         <el-table-column label="计划量" prop="task_num"></el-table-column>
         <el-table-column label="今日" prop="task_day_num"></el-table-column>
-        <el-table-column label="状态" prop="task_status"></el-table-column>
+        <el-table-column label="状态">
+          <template slot-scope="scope">
+            <span v-if="scope.row.task_status === '2'" style="color: #67c23a;">开启</span>
+            <span v-else style="color: #f56c6c;">过期</span>
+          </template>
+        </el-table-column>
       </el-table>
       <div class="pagination-box">
         <el-pagination
