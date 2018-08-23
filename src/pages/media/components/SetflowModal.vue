@@ -20,7 +20,7 @@
         </el-form>
       </el-row>
       <el-row class="curve-row">
-        <el-form :inline="true" label-width="50px">
+        <!-- <el-form :inline="true" label-width="50px">
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="0点">
@@ -158,7 +158,19 @@
             </el-form-item>
             </el-col>
           </el-row>
-        </el-form>
+        </el-form> -->
+        <el-col :span="1">
+          <el-slider vertical  height="200px"></el-slider>
+        </el-col>
+        <el-col :span="1">
+          <el-slider vertical  height="200px"></el-slider>
+        </el-col>
+        <el-col :span="1">
+          <el-slider vertical  height="200px"></el-slider>
+        </el-col>
+        <el-col :span="1">
+          <el-slider vertical  height="200px"></el-slider>
+        </el-col>
       </el-row>
       <div slot="footer" class="dialog-footer">
         <el-button @click="closeModal">取 消</el-button>
