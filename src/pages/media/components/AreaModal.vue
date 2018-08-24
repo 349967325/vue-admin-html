@@ -4,7 +4,7 @@
 <template>
   <div>
     <el-dialog title="流量时间设置" width="1000px"
-      :visible.sync="visible" :modal="true" :modal-append-to-body="false"
+      :visible.sync="visible" :modal="true" :modal-append-to-body="false" :append-to-body="true"
       :close-on-click-modal="false" :before-close="closeModal">
       <el-row class="curve-total">
         <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>

@@ -4,7 +4,7 @@
 <template>
   <div>
     <el-dialog title="流量时间设置" width="1000px"
-      :visible.sync="visible" :modal="true" :modal-append-to-body="false"
+      :visible.sync="visible" :modal="true" :modal-append-to-body="false" :append-to-body="true"
       :close-on-click-modal="false" :before-close="closeModal">
       <el-row class="curve-total">
         <el-form label-width="110px" :inline="true">
@@ -20,7 +20,7 @@
         </el-form>
       </el-row>
       <el-row class="curve-row">
-        <!-- <el-form :inline="true" label-width="50px">
+        <el-form :inline="true" label-width="50px">
           <el-row :gutter="10">
             <el-col :span="6">
             <el-form-item label="0点">
@@ -158,19 +158,7 @@
             </el-form-item>
             </el-col>
           </el-row>
-        </el-form> -->
-        <el-col :span="1">
-          <el-slider vertical  height="200px"></el-slider>
-        </el-col>
-        <el-col :span="1">
-          <el-slider vertical  height="200px"></el-slider>
-        </el-col>
-        <el-col :span="1">
-          <el-slider vertical  height="200px"></el-slider>
-        </el-col>
-        <el-col :span="1">
-          <el-slider vertical  height="200px"></el-slider>
-        </el-col>
+        </el-form>
       </el-row>
       <div slot="footer" class="dialog-footer">
         <el-button @click="closeModal">取 消</el-button>
@@ -205,6 +193,7 @@ export default {
       })
       return total
     },
+    // 检查分配的值
     checkVals () {
       let canComfirm = false
       let total = 0
@@ -275,7 +264,6 @@ export default {
   },
   watch: {
     value (val) {
-      console.log(val)
       this.visible = val
     }
   }
